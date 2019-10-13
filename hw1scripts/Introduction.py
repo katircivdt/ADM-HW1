@@ -1,0 +1,93 @@
+
+#1 -)SAY "HELLO, WORLD!" WITH PYTHON
+
+a = "Hello, World!"
+print(a)
+
+#2 -)PYTHON IF - ELSE
+
+# !/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# For all condition writing if or elif
+
+if __name__ == '__main__':
+    n = int(input().strip())
+    if n % 2 == 1:
+        print("Weird")
+    elif n % 2 == 0 and 2 <= n <= 5:
+        print("Not Weird")
+    elif n % 2 == 0 and 6 <= n <= 20:
+        print("Weird")
+    elif n % 2 == 0 and n > 20:
+        print("Not Weird")
+
+#3 -)ARITHMETIC OPERATORS
+
+# Take input and implement arithmetic operators
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    line1 = a + b
+    line2 = a - b
+    line3 = a * b
+    print(line1, line2, line3, sep="\n")
+
+#4 -)PYTHON: DIVISION
+# take the inputs and divide with floatdivision (/) and integerdivision (//)
+
+if __name__ == '__main__':
+    a = int(input())
+    b = int(input())
+    intdivision = a // b
+    floatdivision = a / b
+
+    print(intdivision, floatdivision, sep='\n')
+
+#5 -)LOOPS
+# Take the input and up to input,print the each number square
+if __name__ == '__main__':
+    n = int(input())
+    for i in range(n):
+        print(i ** 2)
+
+#6 -)WRITE   A FUNCTION
+
+# this function first checks whether input number is divisible by 4 if not Return false
+# If it is then try to divide it with 100
+# if it is both divisible to 400 and 100 and it returns True, if only divisibleto 100 return false
+
+
+def is_leap(year):
+    if year % 4 == 0:
+        if year % 100 == 0:
+            if year % 400 == 0:
+                return True
+            else:
+                return False
+
+        else:
+            return True
+
+    else:
+        return False
+
+
+year = int(input())
+print(is_leap(year))
+
+#7 -)PRINT FUNCTION
+
+# take a number as a input.Then create list by list compherension add 1 to each number.
+# Then print them by using end method = ""
+if __name__ == '__main__':
+    n = int(input())
+    n = [n + 1 for n in range(n)]
+    for i in n:
+        print(i, end="")
+

@@ -1,0 +1,241 @@
+1-)BIRTHDAY CAKE CANDLES
+
+import math
+import os
+import random
+import re
+import sys
+
+def birthdayCakeCandles(ar):
+#find the max number  of array and count how many of it in the array by iterating over list
+    maxi=max(ar)
+    couter=0
+    for i in ar:
+        if i == maxi:
+            couter += 1
+    return couter
+    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    ar_count = int(input())
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = birthdayCakeCandles(ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+	
+2-)KANGAROO
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+from collections import OrderedDict
+
+#in my algorithm for intersection their distance among each other must be closer time by time. When the distance = 0 then they just cath each other
+def kangaroo(x1, v1, x2, v2):
+#if kangoroos v are equal and not in the same place they cant cath eazh other.
+    if v1 == v2 and x1 !=x2:
+        return "NO"
+    else:
+        stepholder = OrderedDict()
+        steps = 0
+        stepholder[0] = (abs(x1-x2))
+
+        while True:
+            steps += 1
+#kangoroos distance functions
+            kangoroo1 = x1 + steps * v1
+            kangoroo2 = x2 + steps * v2
+            stepholder[steps] = (abs(kangoroo1-kangoroo2))
+            difference1 = stepholder[steps-1]
+            difference2 = stepholder[steps]
+#compare with last distance withprevious distance.
+            if difference1 < difference2:    
+                return "NO"
+            elif stepholder[steps] == 0:
+                return "YES"
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    x1V1X2V2 = input().split()
+
+    x1 = int(x1V1X2V2[0])
+
+    v1 = int(x1V1X2V2[1])
+
+    x2 = int(x1V1X2V2[2])
+
+    v2 = int(x1V1X2V2[3])
+
+    result = kangaroo(x1, v1, x2, v2)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
+
+
+
+3-)VIRAL ADVERTISING
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+# easy to understand
+def viralAdvertising(n):
+    nofpeople=5
+    likeholder=[]
+    for i in range(n):
+        likes= nofpeople // 2
+        nofpeople = likes * 3
+        likeholder.append(likes)
+    return sum(likeholder)
+
+    
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    result = viralAdvertising(n)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+	
+4-)RECURSIVE DIGIT SUM
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#this function returns itself  until lenght of string 1. If it is 1 it returns string
+def superDigit(n, k):
+    string=str(sum([int(i) for i in n])*k)
+    
+    if len(string) == 1 :
+        return string
+    else:
+        return superDigit(string,1)
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    n = nk[0]
+
+    k = int(nk[1])
+
+    result = superDigit(n, k)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+5-)INSERTION SORT - PART 1
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+# Complete the insertionSort1 function below.
+def insertionSort1(n, arr):
+#to iterate from last to begining i create a reverse list(5,4,3 ...)
+    indexer=[i for i in range(n)][::-1]
+    lastitem=arr[-1]
+	
+    for i in indexer:
+#if last item < the previous one, previous item inserted to next index.
+        if arr[i-1] > lastitem
+#if it reach the zeroth element then it is the smallest number
+            if i == 0 :
+                arr[i] = lastitem
+                print(*arr)
+            else:
+                arr[i]=arr[i-1]
+                print(*arr)
+#if ith element less than the lastitem then it reach the correct please.        
+		else:
+            arr[i]=lastitem
+            print(*arr)
+            break
+
+
+if __name__ == '__main__':
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    insertionSort1(n, arr)
+
+	
+6-)INSERTION SORT - PART 2	
+#!/bin/python3
+#as like as previous one.but this time every iteration it makes sub group and compare the element inside the subgroup.
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the insertionSort2 function below.
+def insertionSort2(n, arr):
+    
+    for index in range(n):
+        
+        if index == 0:
+            continue
+        else :
+            itemofinterest=arr[:index+1][-1]
+#it choose subgroup last element i mean itemofinterest
+            reverseindex=[i for i in range(len(arr[:index+1]))][::-1]
+#reverse index finds the subgroup list reversed index and and compare from right to left 
+            for i in reverseindex:
+                if arr[i-1] > itemofinterest:
+                    if i == 0 :
+                        arr[i] = itemofinterest
+                        
+                    
+                    else:
+                        arr[i]=arr[i-1]
+                else:
+                    arr[i]=itemofinterest
+                    break
+            print(*arr)
+
+        
+
+            
+
+if __name__ == '__main__':
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    insertionSort2(n, arr)
+

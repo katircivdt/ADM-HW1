@@ -1,0 +1,101 @@
+1-) LIST COMPREHENSIONS
+## Take the inputs and by using list compherension, write the inputs as a list into a list.
+
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+
+    listcomp=[[i,j,k] for i in range(x+1) for j in range(y+1) for k in range(z+1) if i+j+k!=n]
+    print(listcomp)
+
+2-)FIND THE RUNNER-UP SCORE! 
+
+# For finding the 2nd largest number take the inputs and conver them into int.Sort the numbers. Then iterate over the inputs and append them
+#into another list if and only if this specific number not in list. Then print last the second largestnumber.	
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+    arr = sorted(arr)
+    newlist = []
+    for n in arr :
+        if n not in newlist:
+            newlist.append(n)
+    print(newlist[-2])
+
+3-)NESTED LISTS
+#Take the inputs. And then append them into list as a pair of both name and score.
+#Sort function keeps in mind the first ordering of list when it face with same value. so by using this ability, first i sort by name then score in ascending.
+#then i append the value into a new list which are different then minumum score of old list.Then i print the second largest number every time it see it.
+
+from operator import itemgetter
+
+if __name__ == '__main__':
+    students = []
+    for _ in range(int(input())):
+        name = input()
+        score = float(input())
+        students.append([name, score])
+    students=sorted(students,key=itemgetter(0))
+    students=sorted(students,key=itemgetter(1))
+    minholder=students[0][1]
+    newlist=[]
+    for index,item in enumerate(students,0):
+        if item[1]!=minholder:
+            newlist.append(item)        
+    for item in newlist:
+        if item[1]==newlist[0][1]:
+            print(item[0])
+        else:
+            break
+
+
+4-)FINDING THE PERCENTAGE
+##take the inputs and create a key-value pair for each student 
+
+if __name__ == '__main__':
+    n = int(input())
+    student_marks = {}
+    for _ in range(n):
+        name, *line = input().split()
+        scores = list(map(float, line))
+        student_marks[name] = scores
+#mean function which returns 2 decimal for given query_name
+    def mean(data):
+        total=0
+        for item in data:
+            total += item
+        mean = total / len(data)
+        return "{0:.2f}".format(mean)
+
+    query_name = input()
+    print(mean(student_marks[query_name]))
+
+5-)LISTS
+#taking methods as an input
+if __name__ == '__main__':
+    N = int(input())
+    liste=[]
+    for _ in range(N) :
+# each methods have different number of argument. for taking every argument we use *args token.
+        x,*args=input().split()
+#getattr function implement class method and its argument as shown below and return their resuls
+        if x != "print":
+            getattr(liste,x) (*(int(i) for i in args))
+#print isnt attribute so we execute it with eval function. Eval is a bad function in wrong hands!!
+        else:
+            x=x+"(liste)"
+            eval(x)
+
+6-)TUPLES
+
+if __name__ == '__main__':
+    n = int(input())
+    integer_list = map(int, input().split())
+    integer_list = tuple(integer_list)
+    print(hash(integer_list))
+
+
+
+
